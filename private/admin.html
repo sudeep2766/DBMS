@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | CyberShield</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-overlay"></div>
+    <div class="scan-line"></div>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">CYBERSHIELD <span style="font-size: 0.8rem; vertical-align: middle; color: var(--status-pending);">ADMIN</span></div>
+                <div class="nav-links">
+                    <a href="/index.html">Home</a>
+                    <a href="/officer">Officer Port</a>
+                    <a href="/admin">Admin</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="fade-in">
+            <div class="dashboard-header">
+                <h2>SYSTEM MANAGEMENT</h2>
+                <button onclick="downloadPDF('admin')" class="primary-btn" style="font-family: var(--font-heading);">
+                    DOWNLOAD REGISTER (PDF)
+                </button>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalComplaints">0</div>
+                    <div class="stat-label" style="font-family: var(--font-heading);">TOTAL COMPLAINTS</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="pendingComplaints" style="color: var(--status-pending);">0</div>
+                    <div class="stat-label" style="font-family: var(--font-heading);">PENDING</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="resolvedComplaints" style="color: var(--status-resolved);">0</div>
+                    <div class="stat-label" style="font-family: var(--font-heading);">RESOLVED</div>
+                </div>
+            </div>
+
+            <div class="card" style="padding: 0; overflow: hidden;">
+                <div class="table-container">
+                    <table id="complaintsTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Reporter</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="complaintsBody">
+                            <!-- Data populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PDF Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.3/dist/jspdf.plugin.autotable.min.js"></script>
+    
+    <script src="/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => loadComplaints('admin'));
+    </script>
+</body>
+</html>
